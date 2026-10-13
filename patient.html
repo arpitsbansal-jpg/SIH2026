@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>
+    Patient Portal — RETINOVA
+  </title>
+
+  <meta
+    name="description"
+    content="View your retinal screening results, grades and next appointment in plain language."
+  />
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  />
+
+</head>
+
+
+<body>
+
+  <!-- ==================================================
+       NAVIGATION
+       ================================================== -->
+
+  <header class="nav">
+
+    <div class="wrap nav-in">
+
+      <a
+        class="logo"
+        href="index.html"
+      >
+        <span class="dot"></span>
+        RETINOVA
+      </a>
+
+
+      <nav class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a
+          class="active"
+          href="patient.html"
+        >
+          Patient
+        </a>
+
+        <a href="doctor.html">
+          Doctor
+        </a>
+
+        <a href="admin.html">
+          Admin
+        </a>
+
+        <a href="login.html">
+          Login
+        </a>
+
+        <a
+          href="#"
+          id="logout"
+          style="color:var(--terra-dark)"
+        >
+          Log out
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==================================================
+       PATIENT HEADER
+       ================================================== -->
+
+  <div class="portal-head">
+
+    <div class="wrap">
+
+      <span class="eyebrow">
+        Patient Portal
+      </span>
+
+      <h1>
+        Hello,
+        <span id="whoami">
+          guest session
+        </span>
+      </h1>
+
+      <p>
+        Your latest screening result is shown
+        below in plain language.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================================================
+       LATEST RESULT
+       ================================================== -->
+
+  <section>
+
+    <div class="wrap grid-2">
+
+      <div class="reveal">
+
+        <div class="panel">
+
+          <span
+            class="pill warn"
+            id="patientGrade"
+          >
+            Grade 1 · Mild
+          </span>
+
+
+          <h3
+            style="margin:14px 0 8px"
+          >
+            Latest result
+          </h3>
+
+
+          <p
+            id="patientSummary"
+            style="color:var(--ink-soft)"
+          >
+            Your latest AI-assisted screening
+            result will appear here after you
+            upload a fundus image.
+          </p>
+
+
+          <ul
+            class="meta"
+            style="margin-top:18px"
+          >
+
+            <li>
+
+              <span>
+                AI prediction
+              </span>
+
+              <span id="patientPrediction">
+                —
+              </span>
+
+            </li>
+
+
+            <li>
+
+              <span>
+                Confidence
+              </span>
+
+              <span id="patientConfidence">
+                —
+              </span>
+
+            </li>
+
+
+            <li>
+
+              <span>
+                Referable DR
+              </span>
+
+              <span id="patientReferable">
+                —
+              </span>
+
+            </li>
+
+
+            <li>
+
+              <span>
+                Referable probability
+              </span>
+
+              <span id="patientReferableProbability">
+                —
+              </span>
+
+            </li>
+
+
+            <li>
+
+              <span>
+                Image quality
+              </span>
+
+              <span id="patientQuality">
+                —
+              </span>
+
+            </li>
+
+
+            <li>
+
+              <span>
+                Next screening
+              </span>
+
+              <span>
+                14 Feb 2027
+              </span>
+
+            </li>
+
+          </ul>
+
+
+          <div
+            style="
+              margin-top:22px;
+              display:flex;
+              gap:12px;
+              flex-wrap:wrap
+            "
+          >
+
+            <a
+              class="btn"
+              href="index.html#screening"
+            >
+
+              <span>
+                New Screening
+              </span>
+
+              <span class="arrow">
+                →
+              </span>
+
+            </a>
+
+
+            <a
+              class="btn ghost"
+              href="doctor.html"
+            >
+
+              <span>
+                Message My Doctor
+              </span>
+
+              <span class="arrow">
+                →
+              </span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ==================================================
+           XAI / EXPLANATION
+           ================================================== -->
+
+      <div class="reveal">
+
+        <div class="preview-img">
+
+          <img
+            id="patientExplanation"
+            src="assets/xai.jpg"
+            alt="Your retina with highlighted regions"
+            loading="lazy"
+          />
+
+        </div>
+
+
+        <p class="note">
+
+          The bright regions indicate areas
+          highlighted by the AI explanation.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       SCREENING HISTORY
+       ================================================== -->
+
+  <section>
+
+    <div class="wrap">
+
+      <div class="sec-head reveal">
+
+        <h3>
+          Your screening history
+        </h3>
+
+        <p>
+          Every visit, grade and reviewing clinician.
+        </p>
+
+      </div>
+
+
+      <div
+        class="reveal"
+        style="overflow-x:auto"
+      >
+
+        <table>
+
+          <tr>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Eye
+            </th>
+
+            <th>
+              Grade
+            </th>
+
+            <th>
+              Reviewed by
+            </th>
+
+            <th>
+              Status
+            </th>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              Latest
+            </td>
+
+            <td>
+              Uploaded image
+            </td>
+
+            <td id="historyGrade">
+              —
+            </td>
+
+            <td>
+              AI screening
+            </td>
+
+            <td>
+              <span class="pill warn">
+                Pending review
+              </span>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              14 Aug 2026
+            </td>
+
+            <td>
+              Right
+            </td>
+
+            <td>
+              Grade 1 — Mild
+            </td>
+
+            <td>
+              Dr. A. Nair
+            </td>
+
+            <td>
+              <span class="pill warn">
+                Monitor
+              </span>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              14 Aug 2026
+            </td>
+
+            <td>
+              Left
+            </td>
+
+            <td>
+              Grade 0 — No DR
+            </td>
+
+            <td>
+              Dr. A. Nair
+            </td>
+
+            <td>
+              <span class="pill ok">
+                Clear
+              </span>
+
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              02 Feb 2026
+            </td>
+
+            <td>
+              Both
+            </td>
+
+            <td>
+              Grade 0 — No DR
+            </td>
+
+            <td>
+              Dr. M. Iyer
+            </td>
+
+            <td>
+              <span class="pill ok">
+                Clear
+              </span>
+
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              19 Jul 2025
+            </td>
+
+            <td>
+              Both
+            </td>
+
+            <td>
+              Grade 0 — No DR
+            </td>
+
+            <td>
+              Dr. M. Iyer
+            </td>
+
+            <td>
+              <span class="pill ok">
+                Clear
+              </span>
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       PATIENT GUIDANCE
+       ================================================== -->
+
+  <section>
+
+    <div class="wrap">
+
+      <div class="grid-3">
+
+        <div class="card reveal">
+
+          <div class="ico">
+            🩸
+          </div>
+
+          <h4>
+            Keep sugar steady
+          </h4>
+
+          <p>
+            Maintain your diabetes care plan
+            and follow your clinician's advice.
+          </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+          <div class="ico">
+            📅
+          </div>
+
+          <h4>
+            Regular screening
+          </h4>
+
+          <p>
+            Follow the screening interval
+            recommended by your eye-care team.
+          </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+          <div class="ico">
+            ⚠️
+          </div>
+
+          <h4>
+            Call us if…
+          </h4>
+
+          <p>
+            Sudden floaters, dark patches or
+            blurred vision — seek clinical advice
+            promptly.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="quote reveal"
+        style="margin-top:28px"
+      >
+
+        <p>
+          “Your scan is not a verdict.
+          It is a map of what we can still protect.”
+        </p>
+
+        <small>
+          RETINOVA Care Team
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       FOOTER
+       ================================================== -->
+
+  <footer class="wrap">
+
+    <span>
+      © 2026 RETINOVA · Patient Portal
+    </span>
+
+    <span>
+      See Early. Explain Clearly. Act Timely.
+    </span>
+
+  </footer>
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin Portal — RETINOVA</title>
+<meta name="description" content="Manage RETINOVA users, clinics, model versions and system health." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="dot"></span>RETINOVA</a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a><a href="patient.html">Patient</a><a href="doctor.html">Doctor</a><a class="active" href="admin.html">Admin</a><a href="login.html">Login</a>
+    <a href="#" id="logout" style="color:var(--terra-dark)">Log out</a>
+  </nav>
+</div></header>
+
+<div class="portal-head"><div class="wrap">
+  <span class="eyebrow">Admin Portal</span>
+  <h1>System overview · <span id="whoami">guest session</span></h1>
+  <p>All services nominal · inference latency 380 ms · model v3.2.1</p>
+</div></div>
+
+<section>
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b><span data-count="1284">0</span></b><span>Registered users</span></div>
+      <div class="stat"><b><span data-count="130" data-suffix="+">0</span></b><span>Partner clinics</span></div>
+      <div class="stat"><b><span data-count="48" data-suffix="k">0</span></b><span>Scans processed</span></div>
+      <div class="stat"><b><span data-count="99.9" data-dec="1" data-suffix="%">0</span></b><span>Uptime (30d)</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid-3">
+    <div class="card reveal"><div class="ico">🧠</div><h4>Inference service</h4><p><span class="pill ok">Healthy</span></p><p style="margin-top:8px">380 ms p95 · GPU pool 2/4 active</p></div>
+    <div class="card reveal"><div class="ico">🗄️</div><h4>Image store</h4><p><span class="pill ok">Healthy</span></p><p style="margin-top:8px">412 GB used · encrypted at rest</p></div>
+    <div class="card reveal"><div class="ico">🔐</div><h4>Audit log</h4><p><span class="pill warn">2 reviews due</span></p><p style="margin-top:8px">Last export 29 Aug 2026</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h3>User management</h3><p>Roles, clinics and access state.</p></div>
+    <div class="reveal" style="overflow-x:auto">
+      <table>
+        <tr><th>Name</th><th>Role</th><th>Clinic</th><th>Last active</th><th>Status</th></tr>
+        <tr><td>Dr. A. Nair</td><td>Doctor</td><td>Sunrise Eye Centre</td><td>2 min ago</td><td><span class="pill ok">Active</span></td></tr>
+        <tr><td>Dr. M. Iyer</td><td>Doctor</td><td>Lakeview Clinic</td><td>1 h ago</td><td><span class="pill ok">Active</span></td></tr>
+        <tr><td>V. Dubey</td><td>Patient</td><td>Sunrise Eye Centre</td><td>Yesterday</td><td><span class="pill ok">Active</span></td></tr>
+        <tr><td>K. Verma</td><td>Technician</td><td>Mobile Camp 04</td><td>3 d ago</td><td><span class="pill warn">Pending 2FA</span></td></tr>
+        <tr><td>S. Rahman</td><td>Doctor</td><td>City General</td><td>21 d ago</td><td><span class="pill risk">Suspended</span></td></tr>
+      </table>
+    </div>
+    <div class="grid-2 reveal" style="margin-top:34px">
+      <div class="panel">
+        <h4 style="letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--ink-soft)">Model deployment</h4>
+        <ul class="meta" style="margin-top:12px">
+          <li><span>Active version</span><span>v3.2.1</span></li>
+          <li><span>Trained on</span><span>128,400 fundus images</span></li>
+          <li><span>Validation AUC</span><span>0.972</span></li>
+          <li><span>Explainability</span><span>Grad-CAM + lesion masks</span></li>
+        </ul>
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn"><span>Promote v3.3.0</span><span class="arrow">→</span></button>
+          <button class="btn ghost"><span>Export Audit</span><span class="arrow">→</span></button>
+        </div>
+      </div>
+      <div class="quote"><p>“Governance is not paperwork. It is the reason a clinician trusts the second opinion.”</p><small>RETINOVA Platform Policy</small></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap"><span>© 2026 RETINOVA · Admin Portal</span><span>See Early. Explain Clearly. Act Timely.</span></footer>
+<script src="app.js"></script>
+</body>
+</html>

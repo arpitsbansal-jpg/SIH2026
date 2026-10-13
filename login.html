@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login / Signup — RETINOVA</title>
+<meta name="description" content="Sign in to RETINOVA and open the patient, doctor or admin portal." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="dot"></span>RETINOVA</a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a><a href="patient.html">Patient</a><a href="doctor.html">Doctor</a><a href="admin.html">Admin</a><a class="active" href="login.html">Login / Signup</a>
+  </nav>
+</div></header>
+
+<div class="auth-shell">
+  <div class="auth-art">
+    <img src="assets/clinic.jpg" alt="Eye clinic" />
+    <div class="overlay">
+      <h3>Welcome back to calmer screening.</h3>
+      <p>“See Early. Explain Clearly. Act Timely.”</p>
+      <p style="opacity:.85;font-size:.9rem">Demo credentials are not validated — pick a role and you will land in that portal.</p>
+    </div>
+  </div>
+  <div class="auth-form">
+    <div class="tabs"><button class="on" data-mode="login">Login</button><button data-mode="signup">Signup</button></div>
+    <h1 style="font-size:1.7rem">Access your workspace</h1>
+    <p class="note">Choose your role to be routed to the right portal.</p>
+    <form id="authForm">
+      <div id="signupOnly" class="hidden">
+        <label for="fullname">Full name</label>
+        <input id="fullname" type="text" placeholder="Dr. Aditi Rao" />
+      </div>
+      <label for="email">Email</label>
+      <input id="email" type="email" required placeholder="you@clinic.org" />
+      <label for="pw">Password</label>
+      <input id="pw" type="password" required placeholder="••••••••" />
+      <label for="role">Role</label>
+      <select id="role">
+        <option value="patient">Patient</option>
+        <option value="doctor">Doctor</option>
+        <option value="admin">Administrator</option>
+      </select>
+      <div style="margin-top:24px"><button class="btn" id="authSubmit" type="submit"><span>Sign In</span><span class="arrow">→</span></button></div>
+    </form>
+    <p class="note">Or jump straight in: <a style="color:var(--terra-dark);font-weight:700" href="patient.html">Patient</a> · <a style="color:var(--terra-dark);font-weight:700" href="doctor.html">Doctor</a> · <a style="color:var(--terra-dark);font-weight:700" href="admin.html">Admin</a></p>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

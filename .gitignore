@@ -1,0 +1,33 @@
+﻿__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local databases and logs
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# Uploaded patient images and generated explanations
+uploads/*
+!uploads/.gitkeep
+explanations/*
+!explanations/.gitkeep
+
+# Temporary outputs
+gradcam_result.jpg
+gradcam_validation/
+*.tmp
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RETINOVA — Explainable AI for Diabetic Retinopathy Screening</title>
+<meta name="description" content="RETINOVA screens fundus images for diabetic retinopathy with explainable AI. See early, explain clearly, act timely." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html"><span class="dot"></span>RETINOVA</a>
+    <nav class="nav-links">
+      <a class="active" href="index.html">Home</a>
+      <a href="#screening" id="navScreen">Screening</a>
+      <a href="patient.html">Patient</a>
+      <a href="doctor.html">Doctor</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html">Login / Signup</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">● Clinical-grade retinal AI</span>
+      <h1 class="brand">RETINOVA</h1>
+      <h2 class="tag">Explainable AI for<br /><span>Diabetic Retinopathy Screening</span></h2>
+      <p class="motto">“See Early. Explain Clearly. Act Timely.”</p>
+      <div class="status">Server Status: <span class="pulse"></span> <b>CONNECTED</b></div>
+      <div class="hero-cta">
+        <button class="btn" id="startBtn"><span>Start Screening</span><span class="arrow">→</span></button>
+        <a class="btn ghost" href="login.html"><span>Open a Portal</span><span class="arrow">→</span></a>
+      </div>
+      <div class="scroll-hint">Scroll to explore <i>↓</i></div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/hero.jpg" alt="Retinal fundus imaging close-up" />
+      <div class="scan-line"></div>
+      <div class="chip">Grad-CAM overlay · confidence 96.4%</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div>
+  <span>DR Grade 0 — No DR</span><span>Grade 1 — Mild</span><span>Grade 2 — Moderate</span><span>Grade 3 — Severe</span><span>Grade 4 — Proliferative</span><span>Explainable Heatmaps</span><span>HIPAA-aware workflow</span>
+  <span>DR Grade 0 — No DR</span><span>Grade 1 — Mild</span><span>Grade 2 — Moderate</span><span>Grade 3 — Severe</span><span>Grade 4 — Proliferative</span><span>Explainable Heatmaps</span><span>HIPAA-aware workflow</span>
+</div></div>
+
+<!-- SCREENING (revealed on click) -->
+<section id="screening" class="hidden">
+  <div class="wrap">
+    <div class="sec-head">
+      <h3>Upload Fundus Image</h3>
+      <p>Drop a retinal fundus photograph below. RETINOVA validates the file locally before it is received by the screening server.</p>
+    </div>
+    <div class="panel">
+      <div class="dropzone" id="dropzone">
+        <div style="font-size:2.2rem">🩺</div>
+        <h4 style="margin:10px 0 4px;letter-spacing:.14em;text-transform:uppercase">Upload Fundus Image</h4>
+        <p style="color:var(--ink-soft)">Drag &amp; drop, or choose a file from your device</p>
+        <div style="margin-top:18px"><button class="btn" id="chooseBtn"><span>Choose Image</span><span class="arrow">→</span></button></div>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,image/jpeg,image/png" class="hidden" />
+        <p style="margin-top:20px;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)">Accepted formats</p>
+        <div class="formats"><span>JPG</span><span>JPEG</span><span>PNG</span></div>
+      </div>
+
+      <!-- PREVIEW -->
+      <div id="stepPreview" class="hidden">
+        <div class="preview-grid">
+          <div class="preview-img"><img id="pvImg" alt="Selected fundus preview" /></div>
+          <div>
+            <h4 style="letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:var(--ink-soft)">Image details</h4>
+            <ul class="meta">
+              <li><span>Filename</span><span id="mName"></span></li>
+              <li><span>File size</span><span id="mSize"></span></li>
+              <li><span>Image width</span><span id="mW"></span></li>
+              <li><span>Image height</span><span id="mH"></span></li>
+            </ul>
+            <div style="margin-top:22px"><button class="btn" id="uploadBtn"><span>Upload Image</span><span class="arrow">→</span></button></div>
+            <div id="progressWrap" class="hidden">
+              <div class="bar"><i id="bar"></i></div>
+              <p class="note" id="uploadStatus">Uploading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DONE -->
+      <div id="stepDone" class="hidden" style="margin-top:26px">
+        <div class="success"><span class="tick">✓</span> Image Received</div>
+        <p class="note">Image successfully received by the RETINOVA server.</p>
+        <div class="preview-grid">
+          <div class="preview-img"><img id="dImg" alt="Uploaded fundus image" /></div>
+          <div>
+            <ul class="meta">
+              <li><span>Filename</span><span id="dName"></span></li>
+              <li><span>File size</span><span id="dSize"></span></li>
+              <li><span>Dimensions</span><span id="dDim"></span></li>
+              <li><span>Received at</span><span id="dTime"></span></li>
+            </ul>
+            <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+              <button class="btn" id="againBtn"><span>Upload Another</span><span class="arrow">→</span></button>
+              <a class="btn ghost" href="patient.html"><span>View in Patient Portal</span><span class="arrow">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h3>A calm, three-step clinical pathway</h3><p>No jargon, no black boxes. Every prediction arrives with a visual reason a clinician can verify in seconds.</p></div>
+    <div class="grid-3">
+      <div class="card reveal"><div class="ico">①</div><h4>Capture</h4><p>Any standard fundus camera or smartphone adapter. JPG, JPEG and PNG accepted up to 4K.</p></div>
+      <div class="card reveal"><div class="ico">②</div><h4>Explain</h4><p>Grad-CAM heatmaps highlight microaneurysms, haemorrhages and exudates driving the grade.</p></div>
+      <div class="card reveal"><div class="ico">③</div><h4>Act</h4><p>Referral urgency is routed to the doctor portal with a printable, audit-ready summary.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid-2">
+    <div class="reveal"><div class="preview-img"><img src="assets/xai.jpg" alt="Explainable AI heatmap over a retina" loading="lazy" /></div></div>
+    <div class="reveal">
+      <div class="sec-head"><h3>Explainability is the diagnosis</h3><p>RETINOVA never asks you to trust a number. Each grade is paired with lesion-level evidence, a confidence interval and a plain-language rationale you can share with the patient.</p></div>
+      <div class="quote"><p>“Early detection of diabetic retinopathy can prevent up to 95% of severe vision loss.”</p><small>World Health Organization — Vision Care</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b><span data-count="96.4" data-dec="1" data-suffix="%">0</span></b><span>Grading accuracy</span></div>
+      <div class="stat"><b><span data-count="12" data-suffix="s">0</span></b><span>Avg. report time</span></div>
+      <div class="stat"><b><span data-count="48" data-suffix="k">0</span></b><span>Scans reviewed</span></div>
+      <div class="stat"><b><span data-count="130" data-suffix="+">0</span></b><span>Partner clinics</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <div class="sec-head"><h3>Built for the clinic, not the lab</h3><p>Screening camps, primary care and tele-ophthalmology teams use RETINOVA to triage the patients who need a specialist today from those who can safely wait.</p></div>
+      <div class="quote"><p>“Clarity is kindness. A patient who understands their scan comes back for the next one.”</p><small>Dr. A. Nair — Retina Specialist</small></div>
+    </div>
+    <div class="reveal"><div class="preview-img"><img src="assets/clinic.jpg" alt="Ophthalmologist reviewing retinal scans" loading="lazy" /></div></div>
+  </div>
+</section>
+
+<!-- PORTALS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h3>Four connected portals</h3><p>One account, the right workspace. Sign in and RETINOVA takes you where you belong.</p></div>
+    <div class="portal-grid">
+      <a class="portal reveal" href="login.html"><b>Login / Signup</b><p>Secure entry with role selection and demo session.</p><span class="go">Enter <i>→</i></span></a>
+      <a class="portal reveal" href="patient.html"><b>Patient Portal</b><p>Your scans, grades and next appointment in plain language.</p><span class="go">Enter <i>→</i></span></a>
+      <a class="portal reveal" href="doctor.html"><b>Doctor Portal</b><p>Review queue, heatmaps and referral decisions.</p><span class="go">Enter <i>→</i></span></a>
+      <a class="portal reveal" href="admin.html"><b>Admin Portal</b><p>Users, clinics, model version and system health.</p><span class="go">Enter <i>→</i></span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 RETINOVA · Explainable retinal screening · Research demonstration only.</span>
+  <span>See Early. Explain Clearly. Act Timely.</span>
+</footer>
+<script src="app.js"></script>
+<script>document.getElementById('navScreen').addEventListener('click',()=>document.getElementById('screening').classList.remove('hidden'));</script>
+</body>
+</html>

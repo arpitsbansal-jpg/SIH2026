@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doctor Portal — RETINOVA</title>
+<meta name="description" content="Review the AI screening queue, inspect explainability heatmaps and set referral urgency." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="index.html"><span class="dot"></span>RETINOVA</a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a><a href="patient.html">Patient</a><a class="active" href="doctor.html">Doctor</a><a href="admin.html">Admin</a><a href="login.html">Login</a>
+    <a href="#" id="logout" style="color:var(--terra-dark)">Log out</a>
+  </nav>
+</div></header>
+
+<div class="portal-head"><div class="wrap">
+  <span class="eyebrow">Doctor Portal</span>
+  <h1>Review queue · <span id="whoami">guest session</span></h1>
+  <p>7 scans awaiting sign-off · 2 flagged urgent · model v3.2.1</p>
+</div></div>
+
+<section>
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b><span data-count="7">0</span></b><span>Awaiting review</span></div>
+      <div class="stat"><b><span data-count="2">0</span></b><span>Urgent referrals</span></div>
+      <div class="stat"><b><span data-count="41">0</span></b><span>Signed today</span></div>
+      <div class="stat"><b><span data-count="96.4" data-dec="1" data-suffix="%">0</span></b><span>Model agreement</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid-2">
+    <div class="reveal">
+      <div class="preview-img"><img src="assets/hero.jpg" alt="Fundus image under review" loading="lazy" /></div>
+      <p class="note">Case #RTN-2041 · Right eye · captured 31 Aug 2026</p>
+    </div>
+    <div class="reveal">
+      <div class="panel">
+        <span class="pill risk">Grade 3 · Severe</span>
+        <h3 style="margin:14px 0 8px">AI assessment</h3>
+        <ul class="meta">
+          <li><span>Confidence</span><span>91.7%</span></li>
+          <li><span>Microaneurysms</span><span>18 detected</span></li>
+          <li><span>Haemorrhages</span><span>6 quadrants</span></li>
+          <li><span>Hard exudates</span><span>Present, macular</span></li>
+          <li><span>Suggested action</span><span>Refer within 2 weeks</span></li>
+        </ul>
+        <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn"><span>Confirm &amp; Refer</span><span class="arrow">→</span></button>
+          <button class="btn ghost"><span>Override Grade</span><span class="arrow">→</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h3>Pending cases</h3><p>Sorted by AI-assigned urgency.</p></div>
+    <div class="reveal" style="overflow-x:auto">
+      <table>
+        <tr><th>Case</th><th>Patient</th><th>Eye</th><th>AI grade</th><th>Confidence</th><th>Urgency</th></tr>
+        <tr><td>RTN-2041</td><td>V. Dubey</td><td>Right</td><td>Grade 3 — Severe</td><td>91.7%</td><td><span class="pill risk">Urgent</span></td></tr>
+        <tr><td>RTN-2040</td><td>S. Kapoor</td><td>Left</td><td>Grade 4 — Proliferative</td><td>93.2%</td><td><span class="pill risk">Urgent</span></td></tr>
+        <tr><td>RTN-2038</td><td>R. Menon</td><td>Both</td><td>Grade 2 — Moderate</td><td>88.5%</td><td><span class="pill warn">Routine</span></td></tr>
+        <tr><td>RTN-2037</td><td>A. Fernandes</td><td>Right</td><td>Grade 1 — Mild</td><td>95.0%</td><td><span class="pill ok">Monitor</span></td></tr>
+        <tr><td>RTN-2035</td><td>P. Singh</td><td>Left</td><td>Grade 0 — No DR</td><td>98.1%</td><td><span class="pill ok">Clear</span></td></tr>
+      </table>
+    </div>
+    <div class="quote reveal" style="margin-top:28px"><p>“The model proposes. The clinician decides. Every override trains the next version.”</p><small>RETINOVA Clinical Governance</small></div>
+    <div style="margin-top:26px"><a class="btn" href="index.html#screening"><span>Upload New Scan</span><span class="arrow">→</span></a></div>
+  </div>
+</section>
+
+<footer class="wrap"><span>© 2026 RETINOVA · Doctor Portal</span><span>See Early. Explain Clearly. Act Timely.</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
